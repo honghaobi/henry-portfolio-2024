@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Mini } from "./components/Mini";
 import { World } from "./components/World";
+import { calculateMiniPositionByRadius } from "./helpers";
 
 const RADIUS = 600;
 const BACKGROUND_COLOR_MAP = {
@@ -17,16 +18,11 @@ const BACKGROUND_COLOR_MAP = {
 export default function App() {
   const [rotationZ, updateRotationZ] = useState(0);
   const [isMovingForward, updateIsMovingForward] = useState(true);
-  console.log("moving forward: ", isMovingForward);
-
-  console.log(rotationZ);
-
-  const backgroundColor =
-    BACKGROUND_COLOR_MAP[
-      Object.keys(BACKGROUND_COLOR_MAP)[
-        Math.floor((rotationZ / 60) % Object.keys(BACKGROUND_COLOR_MAP).length)
-      ]
+  const page =
+    Object.keys(BACKGROUND_COLOR_MAP)[
+      Math.floor((rotationZ / 60) % Object.keys(BACKGROUND_COLOR_MAP).length)
     ];
+  const backgroundColor = BACKGROUND_COLOR_MAP[page];
 
   return (
     <div className="bg" style={{ backgroundColor }}>
@@ -34,7 +30,7 @@ export default function App() {
       <h1 className="title">Henry's Journey</h1>
       <Canvas
         style={{ width: "100vw", height: "100vh", position: "absolute" }}
-        camera={{ position: [300, 1000, 500] }}
+        camera={{ position: [-300, 700, 200], near: 0.1, far: 10000 }}
       >
         <ambientLight intensity={Math.PI / 2} />
         <pointLight
@@ -49,7 +45,10 @@ export default function App() {
         />
         <Mini radius={RADIUS} isMovingForward={isMovingForward} />
         <axesHelper args={[1000]} />
-        <OrbitControls enableZoom={false} />
+        <OrbitControls
+          enableZoom={false}
+          target={calculateMiniPositionByRadius(RADIUS, 100)}
+        />
       </Canvas>
     </div>
   );

@@ -22,7 +22,7 @@ export const useArrowKeyRotation = (ref, onKeyPress) => {
         onKeyPress(ref.current.rotation.z, false);
       }
       debounceTimeout = setTimeout(() => {
-        onKeyPress(0, null);
+        onKeyPress(ref.current.rotation.z, null);
       }, 500);
     };
 

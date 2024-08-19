@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion-3d";
 import { useArrowKeyRotation } from "../helpers/useArrowKeyRotation";
-import { Tree } from "./Tree";
+import { Trees } from "./Trees";
+
+const MemoizedTrees = React.memo(Trees);
 
 export const World = ({ radius, updateRotationZ, updateIsMovingForward }) => {
   const worldMesh = useRef(null);
@@ -23,7 +25,7 @@ export const World = ({ radius, updateRotationZ, updateIsMovingForward }) => {
         <cylinderGeometry args={[radius + 2, radius + 2, 100, 128]} />
         <meshStandardMaterial color="gray" />
       </motion.mesh>
-      <Tree radius={radius} />
+      <MemoizedTrees radius={radius} count={50} />
     </motion.mesh>
   );
 };
