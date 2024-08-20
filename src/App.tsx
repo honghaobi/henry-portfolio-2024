@@ -11,8 +11,8 @@ const BACKGROUND_COLOR_MAP = {
   work: "#F2EEB3",
   about: "#B2DCA2",
   contact: "#078C7F",
-  resume: "#076F8C",
-  fun: "#732F2F",
+  resume: "#1082a2",
+  fun: "#753e94",
 };
 
 export default function App() {
@@ -23,11 +23,12 @@ export default function App() {
       Math.floor((rotationZ / 60) % Object.keys(BACKGROUND_COLOR_MAP).length)
     ];
   const backgroundColor = BACKGROUND_COLOR_MAP[page];
-
+  console.log(page);
   return (
     <div className="bg" style={{ backgroundColor }}>
       <div className="bgGradient"></div>
       <h1 className="title">Henry's Journey</h1>
+      <h2 className="page">{page}</h2>
       <Canvas
         style={{ width: "100vw", height: "100vh", position: "absolute" }}
         camera={{ position: [-300, 700, 200], near: 0.1, far: 10000 }}
@@ -48,6 +49,8 @@ export default function App() {
         <OrbitControls
           enableZoom={false}
           target={calculateMiniPositionByRadius(RADIUS, 100)}
+          minPolarAngle={Math.PI / 5}
+          maxPolarAngle={Math.PI / 2}
         />
       </Canvas>
     </div>

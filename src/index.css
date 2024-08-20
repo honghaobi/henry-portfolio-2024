@@ -15,9 +15,11 @@ li {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
 }
 
 .bg {
+  position: relative;
   width: 100vw;
   height: 100vh;
   transition: background-color 1s ease;
@@ -41,7 +43,18 @@ li {
 
 .title {
   position: absolute;
-  color: white;
-  font-family: "Rubik", sans-serif;
+  top: 20px;
+  right: 50px;
+  color: #0c2933;
   font-weight: 400;
+  
+}
+
+.page {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  color: #0c2933;
+  font-weight: 400;
+  font-size: 30px;
 }
