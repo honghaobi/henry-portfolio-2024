@@ -16,7 +16,6 @@ export const Trees = ({ radius, count }) => {
         object={scene.clone()}
         position={[randomX, randomY, randomZ]}
         rotation={[Math.PI / 2 - theta, phi, 0]}
-        // scale={[5, 5, 5]} // randomize later
       />
     );
   });

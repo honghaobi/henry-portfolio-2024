@@ -9,7 +9,7 @@ export const useArrowKeyRotation = (ref, onKeyPress) => {
       clearTimeout(debounceTimeout);
       if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
         gsap.to(ref.current.rotation, {
-          z: ref.current.rotation.z - 0.3,
+          z: ref.current.rotation.z - 0.2,
           duration: 1,
         });
 
@@ -23,7 +23,7 @@ export const useArrowKeyRotation = (ref, onKeyPress) => {
       }
       debounceTimeout = setTimeout(() => {
         onKeyPress(ref.current.rotation.z, null);
-      }, 500);
+      }, 250);
     };
 
     window.addEventListener("keydown", handleKeyDown);

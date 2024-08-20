@@ -45,16 +45,15 @@ li {
   position: absolute;
   top: 20px;
   right: 50px;
-  color: #0c2933;
+  color: #0f3845;
   font-weight: 400;
-  
 }
 
 .page {
   position: absolute;
   top: 20px;
   left: 50px;
-  color: #0c2933;
+  color: #0f3845;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 32px;
 }

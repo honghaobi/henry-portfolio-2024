@@ -27,11 +27,11 @@ export default function App() {
   return (
     <div className="bg" style={{ backgroundColor }}>
       <div className="bgGradient"></div>
-      <h1 className="title">Henry's Journey</h1>
+      <h1 className="title">henry's journey</h1>
       <h2 className="page">{page}</h2>
       <Canvas
-        style={{ width: "100vw", height: "100vh", position: "absolute" }}
-        camera={{ position: [-300, 700, 200], near: 0.1, far: 10000 }}
+        style={{ width: "100vw", height: "100vh" }}
+        camera={{ position: [-300, 700, 200], near: 0.1, far: 5000 }}
       >
         <ambientLight intensity={Math.PI / 2} />
         <pointLight
@@ -44,11 +44,15 @@ export default function App() {
           updateRotationZ={updateRotationZ}
           updateIsMovingForward={updateIsMovingForward}
         />
-        <Mini radius={RADIUS} isMovingForward={isMovingForward} />
+        <Mini
+          radius={RADIUS}
+          isMovingForward={isMovingForward}
+          rotationZ={rotationZ}
+        />
         <axesHelper args={[1000]} />
         <OrbitControls
           enableZoom={false}
-          target={calculateMiniPositionByRadius(RADIUS, 100)}
+          target={calculateMiniPositionByRadius(RADIUS, { x: 0, y: 100, z: 0 })}
           minPolarAngle={Math.PI / 5}
           maxPolarAngle={Math.PI / 2}
         />

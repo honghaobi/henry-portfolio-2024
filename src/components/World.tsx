@@ -22,7 +22,7 @@ export const World = ({ radius, updateRotationZ, updateIsMovingForward }) => {
       <sphereGeometry args={[radius, 32, 32]} />
       <meshStandardMaterial color="#B2DCA2" />
       <motion.mesh ref={roadMesh} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[radius + 2, radius + 2, 100, 128]} />
+        <cylinderGeometry args={[radius + 1, radius + 1, 100, 128]} />
         <meshStandardMaterial color="gray" />
       </motion.mesh>
       <MemoizedTrees radius={radius} count={50} />
