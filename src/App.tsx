@@ -17,13 +17,13 @@ const BACKGROUND_COLOR_MAP = {
 
 export default function App() {
   const [rotationZ, updateRotationZ] = useState(0);
-  const [isMovingForward, updateIsMovingForward] = useState(true);
+  const [isMovingForward, updateIsMovingForward] = useState(null);
   const page =
     Object.keys(BACKGROUND_COLOR_MAP)[
       Math.floor((rotationZ / 60) % Object.keys(BACKGROUND_COLOR_MAP).length)
     ];
   const backgroundColor = BACKGROUND_COLOR_MAP[page];
-  console.log(page);
+  // console.log(page);
   return (
     <div className="bg" style={{ backgroundColor }}>
       <div className="bgGradient"></div>
